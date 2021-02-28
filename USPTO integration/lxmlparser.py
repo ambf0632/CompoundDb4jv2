@@ -14,11 +14,9 @@ import sys
 mycursor = mydb.cursor()'''
 
 # CSV Files to upload onto mySQL
-
-fhand = open("ALLPatents.csv","a")
-fh = open("ALLPatentInventor.csv","a")
-f = open("ALLPatentApplicant.csv","a")
-
+fhand = open("/sas/vidhya/CompoundDb4jV2/USPTO/data/ALLPatents.csv","a")
+fh = open("/sas/vidhya/CompoundDb4jV2/USPTO/data/ALLPatentInventor.csv","a")
+f = open("/sas/vidhya/CompoundDb4jV2/USPTO/data/ALLPatentApplicant.csv","a")
 
 # Def to get Details of a person
 def getDetails (tagName):
@@ -44,17 +42,13 @@ def getDetails (tagName):
 #f1 = open("Otherhalf2015.xml","w")
 # MAIN
 
-
-infile =str(sys.argv[1])
-print(infile)
-
+infile = str(sys.argv[1])+"/"+str(sys.argv[2])
+#print(infile)
 context = etree.iterparse(infile, events=('end',), tag='{urn:us:gov:doc:uspto:patent}PatentCaseMetadata')
 count = 1
 # For each patent (Meta Data)
 for event, tags in context:
-
-	print("Xml files : ",count)
-
+	#print("Xml files : ",count)
 	'''if(count == 300000):
 		break'''
 	'''if (count < 507926):
